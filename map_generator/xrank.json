@@ -1,0 +1,42 @@
+{
+    "sz": [
+        "Musselforge Fitness",
+        "Starfish Mainstage",
+        "Sturgeon Shipyard",
+        "Inkblot Art Academy",
+        "Manta Maria",
+        "Snapper Canal",
+        "MakoMart",
+        "Skipper Pavilion"
+    ],
+    "tc": [
+        "Humpback Pump Track",
+        "Moray Towers",
+        "Blackbelly Skatepark",
+        "Shellendorf Institute",
+        "Walleye Warehouse",
+        "Camp Triggerfish",
+        "Piranha Pit",
+        "Wahoo World"
+    ],
+    "rm": [
+        "The Reef",
+        "Musselforge Fitness",
+        "Humpback Pump Track",
+        "Manta Maria",
+        "Arowana Mall",
+        "Camp Triggerfish",
+        "New Albacore Hotel",
+        "Skipper Pavilion"
+    ],
+    "cb": [
+        "The Reef",
+        "Sturgeon Shipyard",
+        "Port Mackerel",
+        "Kelp Dome",
+        "MakoMart",
+        "Goby Arena",
+        "Wahoo World",
+        "Ancho-V Games"
+    ]
+}
