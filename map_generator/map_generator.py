@@ -66,7 +66,7 @@ def map_generation(map_pool: dict, games: list, popularity = None) -> list:
         
     return maplist
     
-def is_valid(map: string, map_history: list) -> bool:
+def is_valid(map: str, map_history: list) -> bool:
     '''
     Returns true if map did not appear in the last BACKLOG chosen maps 
     '''
@@ -88,7 +88,7 @@ def add_and_return_map(map: str, mode: str, buckets: dict, bucket_num: int) -> s
     buckets[bucket_num + 1][mode].append(map)
     return map 
    
-def random_map(map_pool_list: list, popularity_list: list ) -> str:
+def random_map(popularity_list: list ) -> str:
     '''
     Returns a random map based on popularity count 
     '''
@@ -110,10 +110,11 @@ def get_map_poopular(map_pool: dict, mode: str, popularity: dict, map_history: l
     '''
     returns a map based on popularity probability.
     '''
-    map = random_map(map_pool[mode], popularity[mode])
+    popularity_map_pool = {mapname: votes for mapname, votes in popularity[mode].items() if mapname in map_pool[mode]}
+    map = random_map(popularity_map_pool)
     # while not a good map, repeat 
     while not is_valid(map, map_history):
-        map = random_map(map_pool[mode], popularity[mode])
+        map = random_map(popularity_map_pool)
     return map
    
 def get_map(map_pool: dict, mode: str, buckets: dict, map_history: list) ->str:
@@ -134,11 +135,10 @@ def get_map(map_pool: dict, mode: str, buckets: dict, map_history: list) ->str:
 if __name__ == "__main__":  
     xrank_pool = json.load(open("xrank.json"))
     popularity = json.load(open("popularity.json")) 
-    BACKLOG = min(xrank_pool.values())
-
+    BACKLOG = min([len(pool) for pool in xrank_pool])
     sets = [4, 4, 4, 4, 4, 4, 5, 5, 7]
 
-    maplist = map_generation(xrank_pool, sets)
+    maplist = map_generation(xrank_pool, sets, popularity)
     i = 0
     mode_names = {"sz": "Splat Zones", "tc": "Tower Control", "rm": "Rainmaker", "cb": "Clam Blitz"}
     for game in maplist:
